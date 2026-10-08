@@ -139,15 +139,52 @@ function NewShipmentForm({ token, onCreated }) {
   );
 }
 
-function AdminDashboard({ token, admin, onLogout }) {
+function AdminDashboard({ token, admin, onLogout, onCredentialsChanged }) {
   const [shipments, setShipments] = useState([]);
   const [messages, setMessages] = useState([]);
   const [chatSessions, setChatSessions] = useState([]);
   const [selectedChat, setSelectedChat] = useState('');
+  const [usernameDraft, setUsernameDraft] = useState(admin.username);
+  const [currentPassword, setCurrentPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [credentialsBusy, setCredentialsBusy] = useState(false);
   const [error, setError] = useState('');
   const [notice, setNotice] = useState('');
   const [revision, setRevision] = useState(0);
   const [busyId, setBusyId] = useState('');
+
+  async function updateCredentials(event) {
+    event.preventDefault();
+    if (newPassword !== confirmPassword) {
+      setError('The new password and confirmation do not match.');
+      return;
+    }
+    setCredentialsBusy(true);
+    setError('');
+    setNotice('');
+    try {
+      const result = await apiRequest('/api/admin/credentials', {
+        method: 'PUT',
+        token,
+        body: {
+          currentPassword,
+          username: usernameDraft,
+          newPassword,
+        },
+      });
+      onCredentialsChanged(result.token, result.admin);
+      setUsernameDraft(result.admin.username);
+      setCurrentPassword('');
+      setNewPassword('');
+      setConfirmPassword('');
+      setNotice(result.message);
+    } catch (requestError) {
+      setError(requestError.message);
+    } finally {
+      setCredentialsBusy(false);
+    }
+  }
 
   useEffect(() => {
     let active = true;
@@ -237,6 +274,28 @@ function AdminDashboard({ token, admin, onLogout }) {
 
       {error && <p role="alert" className="rounded-lg bg-red-50 p-4 text-sm text-red-800">{error}</p>}
       {notice && <p role="status" className="rounded-lg bg-emerald-50 p-4 text-sm text-emerald-800">{notice}</p>}
+
+      <form onSubmit={updateCredentials} className="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200 md:p-6">
+        <h2 className="text-xl font-bold text-slate-900">Change login details</h2>
+        <p className="mt-1 text-sm text-slate-600">Confirm your current password before changing the admin username or password. Leave the new password blank to keep it unchanged.</p>
+        <div className="mt-5 grid gap-4 md:grid-cols-2">
+          <label className="text-sm font-medium text-slate-700">Admin username
+            <input required autoComplete="username" maxLength="100" value={usernameDraft} onChange={event => setUsernameDraft(event.target.value)} className={`${inputClass} mt-1.5`} />
+          </label>
+          <label className="text-sm font-medium text-slate-700">Current password
+            <input required type="password" autoComplete="current-password" maxLength="200" value={currentPassword} onChange={event => setCurrentPassword(event.target.value)} className={`${inputClass} mt-1.5`} />
+          </label>
+          <label className="text-sm font-medium text-slate-700">New password <span className="font-normal text-slate-500">(optional, at least 12 characters)</span>
+            <input type="password" autoComplete="new-password" minLength="12" maxLength="200" value={newPassword} onChange={event => setNewPassword(event.target.value)} className={`${inputClass} mt-1.5`} />
+          </label>
+          <label className="text-sm font-medium text-slate-700">Confirm new password
+            <input type="password" autoComplete="new-password" maxLength="200" value={confirmPassword} onChange={event => setConfirmPassword(event.target.value)} className={`${inputClass} mt-1.5`} />
+          </label>
+        </div>
+        <div className="mt-4 flex justify-end">
+          <button disabled={credentialsBusy} className={`${buttonClass} bg-sky-700 hover:bg-sky-800`}>{credentialsBusy ? 'Saving…' : 'Save login details'}</button>
+        </div>
+      </form>
 
       <NewShipmentForm token={token} onCreated={message => { setNotice(message); setRevision(value => value + 1); }} />
 
@@ -374,6 +433,13 @@ export default function AdminPortal() {
     setAdmin(null);
   }
 
+  function updateCredentials(nextToken, nextAdmin) {
+    sessionStorage.setItem('korvane_admin_token', nextToken);
+    sessionStorage.setItem('korvane_admin', JSON.stringify(nextAdmin));
+    setToken(nextToken);
+    setAdmin(nextAdmin);
+  }
+
   if (!token || !admin) return <AdminLogin onLogin={login} />;
-  return <AdminDashboard token={token} admin={admin} onLogout={logout} />;
+  return <AdminDashboard token={token} admin={admin} onLogout={logout} onCredentialsChanged={updateCredentials} />;
 }
