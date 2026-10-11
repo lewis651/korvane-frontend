@@ -3,7 +3,7 @@ import { io } from 'socket.io-client';
 import './ChatWidget.css';
 
 const apiOrigin = (import.meta.env.VITE_API_URL || '').replace(/\/+$/, '');
-const whatsappNumber = (import.meta.env.VITE_WHATSAPP_NUMBER || '12025550123').replace(/\D/g, '');
+const whatsappNumber = (import.meta.env.VITE_WHATSAPP_NUMBER || '+19545742587').replace(/\D/g, '');
 const assistantQuestions = [
   ['How do I track my shipment?', 'Enter your tracking number on the tracking page. You can see its latest status, estimated progress, route and arrival time.'],
   ['What services do you offer?', 'Korvane coordinates road, sea and air freight, warehousing, fulfilment, customs brokerage and last-mile delivery.'],
