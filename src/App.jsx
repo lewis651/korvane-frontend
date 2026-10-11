@@ -397,7 +397,7 @@ const Network=()=>(<><section className="px-5 md:px-10 pb-20 text-center">
         <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-5">
           {[['90+','countries'],['140','ports and airports'],['320','warehouses'],['12,000','vehicles']].map(x=>(<div key={x[1]} className="rounded-2xl p-6 text-white" style={{background:'linear-gradient(135deg,#1e6ea7,#0a2236)'}}><div className="f text-4xl font-bold">{x[0]}</div><div className="text-sm text-sky-100">{x[1]}</div></div>))}
         </div>
-        <p className="mt-6 text-sm text-slate-500">Our network connects key freight gateways and regional teams, helping coordinate cargo between origin, transit hubs and final destinations. Hubs include Douala · Rotterdam · Dubai · Shenzhen · Houston · Singapore · Lagos · Hamburg.</p>
+        <p className="mt-6 text-sm text-slate-500">Our network connects key freight gateways and regional teams, helping coordinate cargo between origin, transit hubs and final destinations. Hubs include Dallas · Rotterdam · Dubai · Shenzhen · Houston · Singapore · Lagos · Hamburg.</p>
       </section></>);
 const Reviews=()=>(<><section id="reviews" className="px-5 md:px-10 pb-20">
         <h2 className="text-3xl md:text-4xl font-bold" style={{color:D}}>What our customers say about us</h2>
@@ -435,7 +435,7 @@ function Footer(){
         {col('Services',[['All solutions','#/solutions'],['Road freight','#/solution-road'],['Sea freight','#/solution-sea'],['Air freight','#/solution-air'],['Warehousing','#/solution-warehousing'],['Customs brokerage','#/solution-customs']])}
         {col('Company',[['About us','#/about'],['Customer reviews','#/reviews'],['Careers','#/careers'],['Press','#/press'],['Sustainability','#/sustainability']])}
         {col('Support',[['Track a shipment','#/tracking'],['Request a quote','#/contact'],['FAQ & shipping guides','#/guides'],['Claims & shipment support','#/claims'],['Service areas','#/locations']])}
-        <div><div className="text-white font-semibold mb-4">Contact</div><ul className="space-y-2.5"><li><a href="#/locations" className="hover:text-white">12 Port Road, Bonanjo, Douala</a></li><li><a href="tel:+19545742587" className="hover:text-white">1 9545742587</a></li><li><a href="mailto:hello@korvane.example" className="hover:text-white">hello@korvane.example</a></li><li className="pt-2 text-white">Support: open 24 hours, 7 days</li></ul></div>
+        <div><div className="text-white font-semibold mb-4">Contact</div><ul className="space-y-2.5"><li><a href="#/locations" className="hover:text-white">7920 Sovereign Row Dallas, TX 75247</a></li><li><a href="tel:+19545742587" className="hover:text-white">1 9545742587</a></li><li><a href="mailto:" className="hover:text-white">hello@korvane.example</a></li><li className="pt-2 text-white">Support: open 24 hours, 7 days</li></ul></div>
       </div>
       <div className="mt-12 flex flex-wrap items-center gap-3 border-t border-white/10 pt-8"><span className="text-xs mr-2">Certified and insured:</span>{['ISO 9001','IATA','FIATA','C-TPAT','ISO 14001'].map(x=><span key={x} className="rounded-full border border-sky-300/30 px-3 py-1 text-xs text-sky-100">{x}</span>)}</div>
       <div className="mt-8 py-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 text-xs"><span>© 2026 Korvane Logistics. All rights reserved.</span><span className="flex gap-5"><a href="#/privacy" className="hover:text-white">Privacy</a><a href="#/terms" className="hover:text-white">Terms & conditions</a><a href="#/cookies" className="hover:text-white">Cookies</a></span><div className="flex items-center gap-3"><a href="#/admin" aria-label="Open admin portal" title="Admin portal" className="text-sky-100 opacity-40 transition-opacity hover:opacity-100 focus-visible:opacity-100"><svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><circle cx="12" cy="15.5" r="1"/></svg></a><a href="#top" onClick={e=>{e.preventDefault();window.scrollTo({top:0,behavior:'smooth'})}} className="rounded-full bg-white/10 px-4 py-2 text-white hover:bg-white/20">Back to top ↑</a></div></div>
@@ -444,7 +444,7 @@ function Footer(){
 }
 const words=['BUYING','SHIPPING','TRACKING','DELIVERY'];
 const PageHead=({t,s})=>(<section className="px-5 md:px-10 py-14 text-white" style={bgStyle('head')}><div className="text-xs text-sky-200">Home / {t}</div><h1 className="mt-2 text-4xl md:text-5xl font-bold">{t}</h1><p className="mt-3 max-w-xl text-sky-100">{s}</p></section>);
-const Story=()=>(<section className="px-5 md:px-10 py-16"><h2 className="text-3xl md:text-4xl font-bold" style={{color:D}}>Our story</h2><p className="mt-3 max-w-2xl text-slate-600">Korvane started with two trucks and one promise: tell customers the truth about where their cargo is. Today we run a global network, and that promise still guides every decision.</p><div className="mt-8 grid md:grid-cols-4 gap-5">{[['2012','Founded in Douala with two trucks'],['2016','First sea lane to Rotterdam'],['2020','Launched live shipment tracking'],['2025','Passed 500,000 parcels a year']].map(x=>(<div key={x[0]} className="border-t-4 pt-3" style={{borderColor:B}}><div className="f text-2xl font-bold" style={{color:B}}>{x[0]}</div><p className="text-sm text-slate-600">{x[1]}</p></div>))}</div></section>);
+const Story=()=>(<section className="px-5 md:px-10 py-16"><h2 className="text-3xl md:text-4xl font-bold" style={{color:D}}>Our story</h2><p className="mt-3 max-w-2xl text-slate-600">Korvane started with two trucks and one promise: tell customers the truth about where their cargo is. Today we run a global network, and that promise still guides every decision.</p><div className="mt-8 grid md:grid-cols-4 gap-5">{[['2012','Founded in Dallas with two trucks'],['2016','First sea lane to Rotterdam'],['2020','Launched live shipment tracking'],['2025','Passed 500,000 parcels a year']].map(x=>(<div key={x[0]} className="border-t-4 pt-3" style={{borderColor:B}}><div className="f text-2xl font-bold" style={{color:B}}>{x[0]}</div><p className="text-sm text-slate-600">{x[1]}</p></div>))}</div></section>);
 const Special=()=>(<section className="px-5 md:px-10 pb-20"><h2 className="text-3xl font-bold" style={{color:D}}>Specialised solutions</h2><div className="mt-6 grid md:grid-cols-2 gap-5">{[['Cold chain','Refrigerated trucks, reefer containers and temperature logs for food and pharma.'],['Project cargo','Oversized and heavy loads planned, permitted and escorted end to end.'],['E-commerce fulfilment','Warehousing, pick-and-pack and same-day dispatch for online sellers.'],['Customs brokerage','Classification, duties and clearance handled by licensed brokers.']].map(x=>(<div key={x[0]} className="rounded-2xl bg-sky-50 p-6 ring-1 ring-sky-100"><h3 className="font-bold text-lg" style={{color:D}}>{x[0]}</h3><p className="mt-1 text-sm text-slate-600">{x[1]}</p></div>))}</div></section>);
 function ContactBody() {
   const [sent, setSent] = useState('');
@@ -508,7 +508,7 @@ function ContactBody() {
         )}
       </div>
       <div className="space-y-4 lg:col-span-2">
-        {[['Douala, headquarters','12 Port Road, Bonanjo'],['Rotterdam','Waalhaven Zuidzijde 20'],['Dubai','Jebel Ali Free Zone, Gate 4'],['Houston','8800 Bay Area Blvd']].map(location=><div key={location[0]} className="rounded-2xl p-5 ring-1 ring-slate-200"><div className="font-bold" style={{color:D}}>{location[0]}</div><div className="text-sm text-slate-600">{location[1]}</div></div>)}
+        {[['Dallas, headquarters','7920 Sovereign Row Dallas, TX 75247'],['Rotterdam','Waalhaven Zuidzijde 20'],['Dubai','Jebel Ali Free Zone, Gate 4'],['Houston','8800 Bay Area Blvd']].map(location=><div key={location[0]} className="rounded-2xl p-5 ring-1 ring-slate-200"><div className="font-bold" style={{color:D}}>{location[0]}</div><div className="text-sm text-slate-600">{location[1]}</div></div>)}
         <div className="rounded-2xl p-5 text-white" style={{background:D}}><div className="font-bold">24/7 support</div><div className="text-sm text-sky-100">+1 (555) 014 2290 · hello@korvane.example</div></div>
       </div>
     </section>
@@ -588,7 +588,7 @@ function GuidesPage() {
 
 function LocationsPage() {
   const locations = [
-    ['Douala', '12 Port Road, Bonanjo'],
+    ['Dallas', '7920 Sovereign Row Dallas, TX 75247'],
     ['Rotterdam', 'Waalhaven Zuidzijde 20'],
     ['Dubai', 'Jebel Ali Free Zone, Gate 4'],
     ['Houston', '8800 Bay Area Blvd'],
@@ -713,7 +713,7 @@ function CompanyInfoPage({ title, intro, points }) {
 
 const pages={
 '':()=><><Hero/><Ribbon/><About/><Services/><Tracking/><Process/><Gallery/><Banner/><Reviews/><FaqSec/><CTA/></>,
-about:()=><><PageHead t="About us" s="Learn about the people, network and customer-first approach behind Korvane. Since our first routes from Douala, we have focused on clear shipment updates and dependable coordination from pickup through delivery."/><About/><Story/><Why/><Network/><CTA/></>,
+about:()=><><PageHead t="About us" s="Learn about the people, network and customer-first approach behind Korvane. Since our first routes from Dallas, we have focused on clear shipment updates and dependable coordination from pickup through delivery."/><About/><Story/><Why/><Network/><CTA/></>,
 services:()=><><PageHead t="Services" s="Explore road, sea and air freight alongside warehousing, fulfilment and customs support. We help match each shipment to a practical route and coordinate its key handoffs."/><Services/><Special/><Process/><Gallery/><FaqSec/><CTA/></>,
 solutions:()=><SolutionsPage/>,
 ...Object.fromEntries(serviceSolutions.map(solution => [`solution-${solution.key}`, () => <SolutionPage solution={solution}/>])),
